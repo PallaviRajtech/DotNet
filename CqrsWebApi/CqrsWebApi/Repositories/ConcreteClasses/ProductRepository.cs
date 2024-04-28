@@ -18,10 +18,10 @@ namespace CqrsMediatr.Repositories.ConcreteClasses
         }
         public async Task<IEnumerable<Product>> GetAllProducts() => await Task.FromResult(_products);
 
-        public async Task AddProduct(Product product)
+        public async Task<Product> AddProduct(Product product)
         {
-            _products.Add(product);
-            await Task.CompletedTask;
+           _products.Add(product);
+            return await Task.FromResult(product);
         }
 
         public Task<Product?> GetProductById(int Id)
